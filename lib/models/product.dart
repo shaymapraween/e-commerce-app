@@ -5,7 +5,7 @@ class Product {
   final String image;
   final String description;
   final double price;
-  final quantity;
+  int quantity;
 
   Product(
       {required this.name,

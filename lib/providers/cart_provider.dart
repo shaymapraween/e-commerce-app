@@ -18,8 +18,19 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  incrementQuantity(int index) => _cart[index].quantity++;
-  decrementQuantity(int index) => _cart[index].quantity--;
+  incrementQuantity(int index) {
+    _cart[index].quantity++;
+    notifyListeners();
+  }
+
+  decrementQuantity(int index) {
+    if (_cart[index].quantity > 1) {
+      _cart[index].quantity--;
+    } else {
+      _cart.removeAt(index);
+    }
+    notifyListeners();
+  }
 
   getTotalPrice() {
     double total = 0;
